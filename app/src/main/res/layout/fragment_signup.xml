@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.Signup"
+    android:gravity="center"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="80dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/Signup"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+    <EditText
+        android:id="@+id/rUsername"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:autofillHints="yes"
+        android:hint="@string/username"
+        android:inputType="text" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"/>
+    <EditText
+        android:id="@+id/rEmail"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:hint="@string/abcd_gmail_com"
+        android:autofillHints="yes"
+        android:inputType="textEmailAddress" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"/>
+
+
+    <EditText
+        android:id="@+id/rPass"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="yes"
+        android:fontFamily="sans-serif-light"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/black"
+        android:hint="@string/enter_you_password"
+        android:textSize="15sp" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"/>
+    <EditText
+        android:id="@+id/rConPass"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="yes"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/confirm_your_password"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:text="@string/signup"
+        android:backgroundTint="@color/black"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+
+
+
+</LinearLayout>

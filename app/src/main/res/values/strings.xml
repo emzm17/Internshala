@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Internshala</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="username">username</string>
+    <string name="abcd_gmail_com">abcd@gmail.com</string>
+    <string name="signup">Signup</string>
+    <string name="Signup">SignUp</string>
+    <string name="enter_you_password">Enter you Password</string>
+    <string name="confirm_your_password">confirm your password</string>
+    <string name="dashboard">Dashboard</string>
+</resources>

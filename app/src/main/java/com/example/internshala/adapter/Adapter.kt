@@ -22,13 +22,20 @@ class Adapter(private val list:ArrayList<EWorkshop>,private val context: Context
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DashViewHolder, position: Int) {
          holder.workshopname.text=list[position].name
-         holder.applyBtn.setOnClickListener {
-               selectListener.onItemClick(list[position])
-               applyBtn.set
+         if(list[position].button){
+              holder.applyBtn.text="Applied"
+         }
+         if(!list[position].button){
+             holder.applyBtn.setOnClickListener {
+                 selectListener.onItemClick(position)
+             }
          }
 
     }
 
+    override fun getItemId(position: Int): Long {
+        return list[position].id
+    }
     override fun getItemCount(): Int {
         return list.size
     }

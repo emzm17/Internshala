@@ -11,8 +11,10 @@ class Repository(private val workshopDatabase: WorkshopDatabase) {
 
     fun getAll()=workshopDatabase.workshopdao().getAll()
 
-    suspend fun deleteAll(){
-        workshopDatabase.workshopdao().deleteAll()
+
+
+    suspend fun delete(uid:Long){
+        workshopDatabase.workshopdao().delete(uid)
     }
 
 

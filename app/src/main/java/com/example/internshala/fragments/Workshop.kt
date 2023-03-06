@@ -1,5 +1,6 @@
 package com.example.internshala.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,15 +33,12 @@ class Workshop : Fragment(),SelectListener  {
     private lateinit var editor: SharedPreferences.Editor
     private lateinit var adapter: Adapter
     private lateinit var rcview:RecyclerView
-    private lateinit var appliedlist:ArrayList<EWorkshop>
     private lateinit var dashboardBtn:FloatingActionButton
 
     override fun onAttach(context: Context) {
         preferences = context.getSharedPreferences("userFile", Context.MODE_PRIVATE)
         editor = preferences.edit()
-        if(!preferences.contains("userName")){
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_container,Login()).commit()
-        }
+
         super.onAttach(context)
     }
 
@@ -48,22 +47,13 @@ class Workshop : Fragment(),SelectListener  {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        ( activity as AppCompatActivity ).supportActionBar?.title="Workshop"
         return inflater.inflate(R.layout.fragment_workshop, container, false)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-            vm.deleteall()
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        vm.deleteall()
 
 
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
          database=WorkshopDatabase.getDatabase(requireContext())
          repository= Repository(database)
@@ -73,7 +63,6 @@ class Workshop : Fragment(),SelectListener  {
          vm.insert(EWorkshop(2,"Android Development"))
          vm.insert(EWorkshop(3,"Web Development"))
          workshoplist=ArrayList()
-         appliedlist= ArrayList()
          dashboardBtn=view.findViewById(R.id.dashboardBtn)
          dashboardBtn.setOnClickListener {
              dashboardclick()
@@ -95,15 +84,31 @@ class Workshop : Fragment(),SelectListener  {
     }
 
     private fun dashboardclick() {
-       val bundle=Bundle()
-       bundle.putSerializable("list",appliedlist)
-       val fragment=Dashboard()
-       fragment.arguments=bundle
-       requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_container,fragment).commit()
+        if(!preferences.contains("userName")){
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_container,Login()).commit()
+        }
+       requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_container,Dashboard()).commit()
     }
 
-    override fun onItemClick(eWorkshop: EWorkshop) {
-          appliedlist.add(eWorkshop)
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onItemClick(position:Int) {
+        if(!preferences.contains("userName")){
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.nav_container,Login()).commit()
+        }
+         val currentitem=workshoplist[position]
+         vm.delete(adapter.getItemId(position))
+         currentitem.button=true
+         vm.insert(currentitem)
+        vm.getAll().observe(viewLifecycleOwner) { it->
+            if (!it.isNullOrEmpty()) {
+                workshoplist.clear()
+                it.forEach { i->
+                    workshoplist.add(i)
+                }
+
+            }
+            adapter.notifyDataSetChanged()
+        }
     }
 
 

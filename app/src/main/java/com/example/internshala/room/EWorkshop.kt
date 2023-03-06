@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 
 data class EWorkshop(
     @PrimaryKey(autoGenerate = true)
-    val id:Int,
+    val id:Long,
     var name: String ,
     var button: Boolean = false
 ):Parcelable

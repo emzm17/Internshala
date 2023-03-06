@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.internshala.R
 
 
@@ -39,6 +40,7 @@ class Signup : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        ( activity as AppCompatActivity).supportActionBar?.title="SignUp"
        val view=inflater.inflate(R.layout.fragment_signup, container, false)
         rUserName = view.findViewById(R.id.rUsername)
         rPassword = view.findViewById(R.id.rPass)

@@ -43,6 +43,7 @@ class Login : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        ( activity as AppCompatActivity ).supportActionBar?.title="Login"
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
         val imm =

@@ -19,9 +19,10 @@ class WorkshopViewModel(private val repository: Repository) :ViewModel(){
     fun getAll():LiveData<List<EWorkshop>>{
           return repository.getAll()
     }
-    fun deleteall(){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteAll()
-        }
+
+    fun delete(uid:Long){
+         viewModelScope.launch(Dispatchers.IO) {
+             repository.delete(uid)
+         }
     }
 }

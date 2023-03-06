@@ -13,7 +13,8 @@ interface WorkshopDAO {
     @Query("select * from workshop_table")
     fun getAll(): LiveData<List<EWorkshop>>
 
-    @Query("Delete from workshop_table")
-    suspend fun deleteAll()
+    @Query("Delete from workshop_table  where id=:uid")
+    suspend fun delete(uid:Long)
+
 
 }

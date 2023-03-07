@@ -44,10 +44,10 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:textColor="@color/black"
+        android:inputType="textPassword"
         android:textSize="15sp"
         android:hint="@string/enter_you_password"
-        android:autofillHints="yes"
-        android:inputType="textEmailAddress" />
+        android:autofillHints="yes"/>
     <Button
         android:id="@+id/lBTN"
         android:layout_width="wrap_content"
